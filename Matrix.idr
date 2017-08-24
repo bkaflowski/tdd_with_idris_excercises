@@ -19,4 +19,4 @@ transposeHelper (x :: xs) (y :: ys) = (x :: y) :: transposeHelper xs ys
 transposeMat : Vect m (Vect n elem) -> Vect n (Vect m elem)
 transposeMat [] = createEmpties
 transposeMat (x :: xs) = let xsTrans = transposeMat xs in
-                         transposeHelper x xsTrans
+                         zipWith ((el, v) -> el :: v) x xsTrans
