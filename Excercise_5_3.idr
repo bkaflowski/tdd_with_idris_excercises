@@ -26,6 +26,6 @@ readVectStr f = do Right x <- fGetLine f | Left err => pure (_ ** [])
 
 readVectFile : (filename : String) -> IO (n ** Vect n String)
 readVectFile fn = do Right f <- openFile fn Read | Left err => pure (_ ** [])
-                     let res = readVectStr f
+                     res <- readVectStr f
                      closeFile f
-                     res
+                     pure res
